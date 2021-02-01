@@ -5,7 +5,7 @@
     npm install binance-api-networks
 
 
-### 2020-02-18
+### 2021-02-01
 
 Binance API supports Supports Deposits and Withdrawals for Interoperable Tokens. For example, you can deposit USDT based on OMNI, ERC20 or TRC20 into Binance.
 
