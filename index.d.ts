@@ -1,5 +1,5 @@
 // tslint:disable:interface-name
-declare module 'binance-api-node' {
+declare module 'binance-api-networks' {
   export default function(options?: {
     apiKey?: string
     apiSecret?: string
@@ -100,10 +100,33 @@ declare module 'binance-api-node' {
     success: boolean
   }
 
+  export interface DepositAddressNetwork {
+    address: string,
+    tag: string,
+    addressTag: string,
+    coin: string,
+    url: string,
+    success: boolean,
+  }
+
   export interface WithrawResponse {
     id: string
     msg: string
     success: boolean
+  }
+
+  export interface DepositHistoryNetworkResponse {
+    depositList:
+    {
+      insertTime: number,
+      amount: number;
+      coin: string;
+      network: string;
+      address: string;
+      txId: string;
+      status: DepositStatus;
+    }[];
+    success: boolean,
   }
 
   export enum DepositStatus {
@@ -300,6 +323,16 @@ declare module 'binance-api-node' {
       startTime?: number
       endTime?: number
     }): Promise<DepositHistoryResponse>
+    depositAddressNetworks(options: {
+      coin: string
+      network?: string
+    }): Promise<DepositAddressNetwork>
+    depositHistoryNetworks(options: {
+      coin?: string
+      status?: number
+      startTime?: number
+      endTime?: number
+    }): Promise<DepositHistoryNetworkResponse>
     universalTransfer(options: UniversalTransfer): Promise<{tranId: number}>
     universalTransferHistory(options: UniversalTransferHistory): Promise<UniversalTransferHistoryResponse>
     futuresPing(): Promise<boolean>
