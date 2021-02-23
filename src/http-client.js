@@ -360,7 +360,7 @@ export default opts => {
     getDataStream: () => privCall('/api/v3/userDataStream', null, 'POST', true),
     keepDataStream: payload => privCall('/api/v3/userDataStream', payload, 'PUT', false, true),
     closeDataStream: payload => privCall('/api/v3/userDataStream', payload, 'DELETE', false, true),
-
+    accountSnapshot: payload => privCall('/sapi/v1/accountSnapshot', payload, 'GET'),
     marginGetDataStream: () => privCall('/sapi/v1/userDataStream', null, 'POST', true),
     marginKeepDataStream: payload =>
       privCall('/sapi/v1/userDataStream', payload, 'PUT', false, true),
